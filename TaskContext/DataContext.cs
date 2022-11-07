@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TaskModels;
+using TaskSeeds;
 
-namespace TaskModels
+
+namespace TaskContext
 {
     public class DataContext : DbContext
     {
@@ -8,8 +11,8 @@ namespace TaskModels
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            Seeds.HotelSeed.Seed(modelBuilder);
-            Seeds.HotelPricesSeed.Seed(modelBuilder);
+            HotelSeed.Seed(modelBuilder);
+            HotelPricesSeed.Seed(modelBuilder);
         }
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<HotelPrices> HotelPrices { get; set; }

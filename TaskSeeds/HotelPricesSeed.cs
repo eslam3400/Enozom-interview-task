@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TaskModels;
 
-namespace TaskModels.Seeds
+namespace TaskSeeds
 {
     public static class HotelPricesSeed
     {
