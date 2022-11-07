@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\TaskContext\TaskContext.csproj" />
     <ProjectReference Include="..\TaskModels2\TaskModels.csproj" />
+    <ProjectReference Include="..\TaskRepositories\TaskRepositories.csproj" />
   </ItemGroup>
 
 </Project>

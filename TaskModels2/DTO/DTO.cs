@@ -1,4 +1,4 @@
-﻿namespace Task.Repositories
+﻿namespace TaskModels.DTO
 {
     public class HotelSearchDTO
     {

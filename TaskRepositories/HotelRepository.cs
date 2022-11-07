@@ -1,7 +1,8 @@
 ﻿using TaskModels;
+using TaskModels.DTO;
 using TaskContext;
 
-namespace Task.Repositories
+namespace TaskRepositories
 {
     public class HotelRepository : IRepository<Hotel>
     {

@@ -1,4 +1,4 @@
-﻿namespace Task.Repositories
+﻿namespace TaskRepositories
 {
     public interface IRepository<Model>
     {
