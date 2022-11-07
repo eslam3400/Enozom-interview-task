@@ -1,6 +1,6 @@
 ﻿namespace TaskModels.DTO
 {
-    public class HotelSearchDTO
+    public class HotelSearch
     {
         public int HotelId { get; set; }
         public string Name { get; set; }
