@@ -1,6 +1,6 @@
 ﻿using TaskModels;
 
-namespace Task.Factories.Hotels
+namespace TaskFactory.Hotels
 {
     public class Hotel2 : Hotel
     {
