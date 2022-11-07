@@ -1,16 +1,14 @@
 ﻿using TaskRepositories;
 using TaskModels;
+using TaskModels.DTO.Hotel;
 
 namespace TaskServices
 {
     public class HotelService
     {
-        private readonly HotelRepository hotelRepo;
-        public HotelService(IRepository<Hotel> hotelRepo) { this.hotelRepo = (HotelRepository?)hotelRepo; }
-        public List<SearchResult> SearchByDate(DateTime startDate, DateTime endDate)
+        public List<SearchResult> SearchByDate(DateTime startDate, DateTime endDate, List<HotelSearch> hotels)
         {
             int daysCount = (endDate - startDate).Days + 1;
-            var hotels = hotelRepo.SearchByDate(startDate, endDate);
             var finalResult = new List<SearchResult>();
             for (int i = 0; i < hotels.Count; i++)
             {

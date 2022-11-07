@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TaskModels;
-using TaskModels.DTO;
 using TaskContext;
+using TaskModels.DTO.Hotel;
 
 namespace TaskRepositories
 {
@@ -13,10 +13,12 @@ namespace TaskRepositories
         public void Add(Hotel entity)
         {
             context.Hotels.Add(entity);
+            Save();
         }
         public void Delete(int id)
         {
             context.Hotels.Remove(Get(id));
+            Save();
         }
         public Hotel Get(int id)
         {
@@ -28,7 +30,9 @@ namespace TaskRepositories
         }
         public void Update(int id, Hotel entity)
         {
-            context.Entry(entity).State = EntityState.Modified;
+            var hotel = Get(id);
+            hotel.Name = entity.Name;
+            Save();
         }
         public void Save()
         {

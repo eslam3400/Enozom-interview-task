@@ -11,11 +11,23 @@ namespace TaskRepositories
         public void Add(HotelPrices entity)
         {
             context.HotelPrices.Add(entity);
+            Save();
+        }
+
+        public void AddMany(int id, List<HotelPrices> prices)
+        {
+            foreach (HotelPrices item in prices)
+            {
+                item.HotelId = id;
+                context.HotelPrices.Add(item);
+            }
+            Save();
         }
 
         public void Delete(int id)
         {
             context.HotelPrices.Remove(Get(id));
+            Save();
         }
 
         public HotelPrices Get(int id)
@@ -28,6 +40,11 @@ namespace TaskRepositories
             return context.HotelPrices.ToList();
         }
 
+        public List<HotelPrices> GetAll(int hotelId)
+        {
+            return context.HotelPrices.Where(filter => filter.HotelId == hotelId).ToList();
+        }
+
         public void Save()
         {
             context.SaveChanges();
@@ -35,7 +52,10 @@ namespace TaskRepositories
 
         public void Update(int id, HotelPrices entity)
         {
-            context.Entry(entity).State = EntityState.Modified;
+            var hotel = Get(id);
+            hotel.Date = entity.Date;
+            hotel.Price = entity.Price;
+            Save();
         }
     }
 }

@@ -8,7 +8,6 @@ var MySqlConnectionString = builder.Configuration.GetConnectionString("MySql");
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddDbContext<DataContext>(options => options.UseMySql(MySqlConnectionString, ServerVersion.AutoDetect(MySqlConnectionString)));
-builder.Services.AddScoped<IRepository<Hotel>, HotelRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

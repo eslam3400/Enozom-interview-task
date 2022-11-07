@@ -1,4 +1,4 @@
-﻿namespace TaskModels.DTO
+﻿namespace TaskModels.DTO.Hotel
 {
     public class HotelSearch
     {
