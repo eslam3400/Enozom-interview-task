@@ -5,10 +5,6 @@ namespace TaskModels
     public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            options.UseMySql(ModelsConfig.MySqlConnectioString, ServerVersion.AutoDetect(ModelsConfig.MySqlConnectioString));
-        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
