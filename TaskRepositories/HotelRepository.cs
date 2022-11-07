@@ -1,4 +1,5 @@
-﻿using TaskModels;
+﻿using Microsoft.EntityFrameworkCore;
+using TaskModels;
 using TaskModels.DTO;
 using TaskContext;
 
@@ -29,8 +30,8 @@ namespace TaskRepositories
         }
         public void Update(int id, Hotel entity)
         {
-            //context.Entry(entity).State = EntityState.Modified;
-            //Save();
+            context.Entry(entity).State = EntityState.Modified;
+            Save();
         }
         public void Save()
         {

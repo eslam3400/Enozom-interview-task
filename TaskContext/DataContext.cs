@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TaskModels;
-using TaskSeeds;
+using TaskContext.Seeds;
 
 
 namespace TaskContext

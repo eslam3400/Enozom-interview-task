@@ -12,7 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TaskModels2\TaskModels.csproj" />
-    <ProjectReference Include="..\TaskSeeds\TaskSeeds.csproj" />
   </ItemGroup>
 
 </Project>
