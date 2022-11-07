@@ -1,4 +1,4 @@
-﻿namespace Task.Models
+﻿namespace TaskModels
 {
     public class HotelPrices
     {

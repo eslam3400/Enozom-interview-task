@@ -1,5 +1,5 @@
 ﻿using Task.Factories.Hotels;
-using Task.Models;
+using TaskModels;
 
 namespace Task.Factories
 {

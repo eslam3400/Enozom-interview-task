@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Task.Data;
-using Task.Models;
+﻿using TaskModels;
 
 namespace Task.Repositories
 {

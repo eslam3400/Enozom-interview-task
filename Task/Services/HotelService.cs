@@ -1,5 +1,5 @@
-﻿using Task.Models;
-using Task.Repositories;
+﻿using Task.Repositories;
+using TaskModels;
 
 namespace Task.Services
 {

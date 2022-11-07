@@ -1,4 +1,4 @@
-﻿using Task.Models;
+﻿using TaskModels;
 
 namespace Task.Factories.Hotels
 {
