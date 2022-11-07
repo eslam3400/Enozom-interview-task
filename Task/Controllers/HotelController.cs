@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskRepositories;
-using Task.Services;
+using TaskServices;
 using TaskModels;
 
 namespace Task.Controllers

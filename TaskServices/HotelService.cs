@@ -1,7 +1,7 @@
 ﻿using TaskRepositories;
 using TaskModels;
 
-namespace Task.Services
+namespace TaskServices
 {
     public class HotelService
     {
