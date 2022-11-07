@@ -2,12 +2,16 @@ using Microsoft.EntityFrameworkCore;
 using TaskRepositories;
 using TaskModels;
 using TaskContext;
+using TaskServices;
 
 var builder = WebApplication.CreateBuilder(args);
 var MySqlConnectionString = builder.Configuration.GetConnectionString("MySql");
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddDbContext<DataContext>(options => options.UseMySql(MySqlConnectionString, ServerVersion.AutoDetect(MySqlConnectionString)));
+builder.Services.AddScoped<IRepository<Hotel>, HotelRepository>();
+builder.Services.AddScoped<IRepository<HotelPrices>, HotelPricesRepository>();
+builder.Services.AddScoped<IService<Hotel>, HotelService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -4,7 +4,7 @@ using TaskModels.DTO.Hotel;
 
 namespace TaskServices
 {
-    public class HotelService
+    public class HotelService : IService<Hotel>
     {
         public List<SearchResult> SearchByDate(DateTime startDate, DateTime endDate, List<HotelSearch> hotels)
         {
