@@ -1,7 +1,7 @@
 ﻿using Task.Factories.Hotels;
 using TaskModels;
 
-namespace Task.Factories
+namespace TaskFactory
 {
     public class HotelFactory
     {
