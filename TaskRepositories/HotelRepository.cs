@@ -5,7 +5,7 @@ using TaskModels.DTO.Hotel;
 
 namespace TaskRepositories
 {
-    public class HotelRepository : IRepository<Hotel>
+    public class HotelRepository : IHotelRepository
     {
         private readonly DataContext context;
 

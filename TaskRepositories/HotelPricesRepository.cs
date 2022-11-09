@@ -1,10 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
-using TaskContext;
+﻿using TaskContext;
 using TaskModels;
 
 namespace TaskRepositories
 {
-    public class HotelPricesRepository : IRepository<HotelPrices>
+    public class HotelPricesRepository : IHotelPricesRepository
     {
         private readonly DataContext context;
         public HotelPricesRepository(DataContext context) { this.context = context; }
@@ -35,14 +34,14 @@ namespace TaskRepositories
             return context.HotelPrices.Find(id);
         }
 
-        public List<HotelPrices> GetAll()
-        {
-            return context.HotelPrices.ToList();
-        }
-
         public List<HotelPrices> GetAll(int hotelId)
         {
             return context.HotelPrices.Where(filter => filter.HotelId == hotelId).ToList();
+        }
+
+        public List<HotelPrices> GetAll()
+        {
+            throw new NotImplementedException();
         }
 
         public void Save()

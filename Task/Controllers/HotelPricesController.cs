@@ -2,6 +2,7 @@
 using TaskContext;
 using TaskModels;
 using TaskRepositories;
+using TaskServices;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,15 +12,14 @@ namespace Task.Controllers
     [ApiController]
     public class HotelPricesController : ControllerBase
     {
-        private readonly DataContext context;
-        public HotelPricesController(DataContext context){ this.context = context; }
+        private readonly IHotelPricesService hotelPricesService;
+        public HotelPricesController(IHotelPricesService hotelPricesService){ this.hotelPricesService = hotelPricesService; }
 
         [HttpGet]
         [Route("{id}")]
         public IActionResult GetAll(int id)
         {
-            var repo = new HotelPricesRepository(context);
-            var prices = repo.GetAll(id);
+            var prices = hotelPricesService.AllPrices(id);
             if (prices.Count <= 0) return NotFound("No Data");
             return Ok(prices);
         }
@@ -28,24 +28,21 @@ namespace Task.Controllers
         [Route("{id}")]
         public IActionResult Post(int id, [FromBody] List<HotelPrices> prices)
         {
-            var repo = new HotelPricesRepository(context);
-            repo.AddMany(id, prices);
+            hotelPricesService.AddNewHotelPrices(id, prices);
             return Ok();
         }
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] HotelPrices price)
         {
-            var repo = new HotelPricesRepository(context);
-            repo.Update(id, price);
+            hotelPricesService.UpdateHotelPrice(id, price);
             return Ok();
         }
         
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var repo = new HotelPricesRepository(context);
-            repo.Delete(id);
+            hotelPricesService.DeleteHotelPrice(id);
             return Ok();
         }
     }

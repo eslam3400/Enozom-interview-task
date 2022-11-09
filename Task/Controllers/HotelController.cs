@@ -12,13 +12,12 @@ namespace Task.Controllers
     [ApiController]
     public class HotelController : ControllerBase
     {
-        private readonly DataContext context;
-        public HotelController(DataContext context) { this.context = context; }
+        private readonly IHotelService hotelService;
+        public HotelController(IHotelService hotelService) { this.hotelService = hotelService; }
 
         [HttpGet]
         public IActionResult GetAll([FromQuery] SearchQueryParams query)
         {
-            var hotelRepo = new HotelRepository(context);
             if(query.Start != null && query.End != null)
             {
                 DateTime startDate = new DateTime(2000, 1, 1);
@@ -26,46 +25,40 @@ namespace Task.Controllers
                 //validation that start and end dates are provided & in a correct format from query
                 if (!DateTime.TryParse(query.Start, out startDate) || !DateTime.TryParse(query.End, out endDate))
                     return BadRequest("Please make sure input is valid date");
-                var hotelsByDate = hotelRepo.SearchByDate(startDate, endDate);
-                var hotelService = new HotelService();
-                var FilterdHotels = hotelService.SearchByDate(startDate, endDate, hotelsByDate);
+                var FilterdHotels = hotelService.SearchByDate(startDate, endDate);
                 if (FilterdHotels.Count <= 0) return NotFound("No Data");
                 return Ok(FilterdHotels);
             }
-            var hotels = hotelRepo.GetAll();
+            var hotels = hotelService.AllHotels();
             if (hotels.Count <= 0) return NotFound("No Data");
-            return Ok(hotelRepo.GetAll());
+            return Ok(hotels);
         }
         [HttpGet]
         [Route("{id}")]
         public IActionResult GetOne(int id)
         {
-            var repo = new HotelRepository(context);
-            var hotel = repo.Get(id);
+            var hotel = hotelService.GetHotelById(id);
             if (hotel == null) return NotFound("No Data");
             return Ok(hotel);
         }
         [HttpPost]
         public IActionResult Add([FromBody]Hotel hotel) {
             if (hotel.Name == null) { return BadRequest("Please Provide HotelName"); }
-            var repo = new HotelRepository(context);
-            repo.Add(hotel);
+            hotelService.AddNewHotel(hotel);
             return Ok();
         }
         [HttpPut]
         [Route("{id}")]
         public IActionResult Update(int id, [FromBody] UpdateHotel hotel)
         {
-            var hotelRepo = new HotelRepository(context);
-            hotelRepo.Update(id, new Hotel { Name = hotel.Name });
+            hotelService.UpdateHotel(id, new Hotel { Name = hotel.Name });
             return Ok();
         }
         [HttpDelete]
         [Route("{id}")]
         public IActionResult Delete(int id)
         {
-            var repo = new HotelRepository(context);
-            repo.Delete(id);
+            hotelService.DeleteHotel(id);
             return Ok();
         }
     }

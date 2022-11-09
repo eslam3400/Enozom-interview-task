@@ -1,13 +1,39 @@
 ﻿using TaskRepositories;
 using TaskModels;
-using TaskModels.DTO.Hotel;
 
 namespace TaskServices
 {
-    public class HotelService : IService<Hotel>
+    public class HotelService : IHotelService
     {
-        public List<SearchResult> SearchByDate(DateTime startDate, DateTime endDate, List<HotelSearch> hotels)
+        private readonly IHotelRepository hotelRepository;
+        public HotelService(IHotelRepository hotelRepository)
         {
+            this.hotelRepository = hotelRepository;
+        }
+
+        public void AddNewHotel(Hotel hotel)
+        {
+            hotelRepository.Add(hotel);
+        }
+
+        public List<Hotel> AllHotels()
+        {
+            return hotelRepository.GetAll();
+        }
+
+        public void DeleteHotel(int id)
+        {
+            hotelRepository.Delete(id);
+        }
+
+        public Hotel GetHotelById(int id)
+        {
+            return hotelRepository.Get(id);
+        }
+
+        public List<SearchResult> SearchByDate(DateTime startDate, DateTime endDate)
+        {
+            var hotels = hotelRepository.SearchByDate(startDate, endDate);
             int daysCount = (endDate - startDate).Days + 1;
             var finalResult = new List<SearchResult>();
             for (int i = 0; i < hotels.Count; i++)
@@ -23,6 +49,11 @@ namespace TaskServices
                 finalResult[index].TotalPrice += hotel.Price;
             }
             return finalResult;
+        }
+
+        public void UpdateHotel(int id, Hotel hotel)
+        {
+            hotelRepository.Update(id, hotel);
         }
     }
     public class SearchResult
