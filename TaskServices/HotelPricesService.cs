@@ -1,5 +1,6 @@
 ﻿using TaskModels;
-using TaskRepositories;
+using TaskRepositories.Interfaces;
+using TaskServices.Interfacs;
 
 namespace TaskServices
 {

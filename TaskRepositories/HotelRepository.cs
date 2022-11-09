@@ -2,6 +2,7 @@
 using TaskModels;
 using TaskContext;
 using TaskModels.DTO.Hotel;
+using TaskRepositories.Interfaces;
 
 namespace TaskRepositories
 {

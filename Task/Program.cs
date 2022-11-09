@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using TaskRepositories;
-using TaskModels;
 using TaskContext;
 using TaskServices;
+using TaskRepositories.Interfaces;
+using TaskServices.Interfacs;
 
 var builder = WebApplication.CreateBuilder(args);
 var MySqlConnectionString = builder.Configuration.GetConnectionString("MySql");

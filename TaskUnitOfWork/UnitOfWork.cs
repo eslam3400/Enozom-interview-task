@@ -3,12 +3,12 @@ using TaskContext;
 
 namespace TaskUnitOfWork
 {
-    public class addHotelUnitOfWork
+    public class UnitOfWork
     {
         private HotelRepository hotelRepo;
         private HotelPricesRepository hotelPricesRepo;
         private DataContext context;
-        public addHotelUnitOfWork(DataContext context) { this.context = context; }
+        public UnitOfWork(DataContext context) { this.context = context; }
         public HotelRepository HotelRepository
         {
             get

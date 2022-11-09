@@ -1,5 +1,7 @@
-﻿using TaskRepositories;
-using TaskModels;
+﻿using TaskModels;
+using TaskServices.Interfacs;
+using TaskModels.DTO.Hotel;
+using TaskRepositories.Interfaces;
 
 namespace TaskServices
 {
@@ -18,7 +20,6 @@ namespace TaskServices
             hotelRepository.Add(hotel);
             if(hotel.Prices.Count > 0) hotelPricesRepository.AddMany(hotel.Id,hotel.Prices);
             hotelRepository.Save();
-            hotelPricesRepository.Save();
         }
 
         public List<Hotel> AllHotels()
@@ -60,11 +61,5 @@ namespace TaskServices
         {
             hotelRepository.Update(id, hotel);
         }
-    }
-    public class SearchResult
-    {
-        public int HotelId { get; set; }
-        public string HotelName { get; set; }
-        public float TotalPrice { get; set; }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaskRepositories;
-using TaskServices;
-using TaskContext;
-using TaskUnitOfWork;
+using TaskServices.Interfacs;
 using TaskModels;
 using TaskModels.DTO.Hotel;
 
