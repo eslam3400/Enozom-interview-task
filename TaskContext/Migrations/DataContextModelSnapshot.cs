@@ -166,13 +166,11 @@ namespace TaskContext.Migrations
 
             modelBuilder.Entity("TaskModels.HotelPrices", b =>
                 {
-                    b.HasOne("TaskModels.Hotel", "Hotel")
+                    b.HasOne("TaskModels.Hotel", null)
                         .WithMany("Prices")
                         .HasForeignKey("HotelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Hotel");
                 });
 
             modelBuilder.Entity("TaskModels.Hotel", b =>

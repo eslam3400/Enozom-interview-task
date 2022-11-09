@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TaskModels;
+using TaskModels.DTO.HotelPrices;
 using TaskServices.Interfacs;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -24,14 +24,14 @@ namespace Task.Controllers
 
         [HttpPost]
         [Route("{id}")]
-        public IActionResult Post(int id, [FromBody] List<HotelPrices> prices)
+        public IActionResult Post(int id, [FromBody] List<HotelPricesDTO> prices)
         {
             hotelPricesService.AddNewHotelPrices(id, prices);
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] HotelPrices price)
+        public IActionResult Put(int id, [FromBody] HotelPricesDTO price)
         {
             hotelPricesService.UpdateHotelPrice(id, price);
             return Ok();

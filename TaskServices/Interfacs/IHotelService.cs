@@ -6,10 +6,10 @@ namespace TaskServices.Interfacs
     public interface IHotelService
     {
         List<SearchResult> SearchByDate(DateTime dateTime, DateTime endTime);
-        List<Hotel> AllHotels();
-        Hotel GetHotelById(int id);
-        void AddNewHotel(Hotel hotel);
-        void UpdateHotel(int id, Hotel hotel);
+        List<HotelDTO> AllHotels();
+        HotelDTO GetHotelById(int id);
+        void AddNewHotel(HotelDTO hotel);
+        void UpdateHotel(int id, HotelDTO hotel);
         void DeleteHotel(int id);
     }
 }

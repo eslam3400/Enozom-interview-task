@@ -1,11 +1,11 @@
-﻿using TaskModels;
+﻿using TaskModels.DTO.HotelPrices;
 
 namespace TaskRepositories.Interfaces
 {
-    public interface IHotelPricesRepository : IRepository<HotelPrices>
+    public interface IHotelPricesRepository : IRepository<HotelPricesDTO>
     {
-        void AddMany(int id, List<HotelPrices> hotelPrices);
-        List<HotelPrices> GetAll(int id);
+        void AddMany(int id, List<HotelPricesDTO> hotelPrices);
+        List<HotelPricesDTO> GetAll(int id);
 
     }
 }

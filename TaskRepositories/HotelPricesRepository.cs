@@ -1,5 +1,6 @@
 ﻿using TaskContext;
 using TaskModels;
+using TaskModels.DTO.HotelPrices;
 using TaskRepositories.Interfaces;
 
 namespace TaskRepositories
@@ -8,38 +9,45 @@ namespace TaskRepositories
     {
         private readonly DataContext context;
         public HotelPricesRepository(DataContext context) { this.context = context; }
-        public void Add(HotelPrices entity)
+        public void Add(HotelPricesDTO entity)
         {
-            context.HotelPrices.Add(entity);
+            var price = new HotelPrices { Id = entity.Id, Date = entity.Date, Price = entity.Price, HotelId = entity.HotelId };
+            context.HotelPrices.Add(price);
             Save();
         }
 
-        public void AddMany(int id, List<HotelPrices> prices)
+        public void AddMany(int id, List<HotelPricesDTO> prices)
         {
-            foreach (HotelPrices item in prices)
+            foreach (HotelPricesDTO item in prices)
             {
-                item.HotelId = id;
-                context.HotelPrices.Add(item);
+                var price = new HotelPrices { HotelId = item.HotelId, Price = item.Price, Date = item.Date };
+                context.HotelPrices.Add(price);
             }
         }
 
         public void Delete(int id)
         {
-            context.HotelPrices.Remove(Get(id));
+            var price = Get(id);
+            context.HotelPrices.Remove(new HotelPrices { Id = price.Id, Date = price.Date, Price = price.Price, HotelId = price.HotelId });
             Save();
         }
 
-        public HotelPrices Get(int id)
+        public HotelPricesDTO Get(int id)
         {
-            return context.HotelPrices.Find(id);
+            var price = context.HotelPrices.Find(id);
+            return new HotelPricesDTO { Id = price.Id, Date = price.Date, Price = price.Price, HotelId = price.HotelId };
         }
 
-        public List<HotelPrices> GetAll(int hotelId)
+        public List<HotelPricesDTO> GetAll(int hotelId)
         {
-            return context.HotelPrices.Where(filter => filter.HotelId == hotelId).ToList();
+            var prices = context.HotelPrices.Where(filter => filter.HotelId == hotelId).ToList();
+            var pricesDto = new List<HotelPricesDTO>();
+            foreach (var price in pricesDto)
+                pricesDto.Add(new HotelPricesDTO { Date = price.Date, HotelId = price.HotelId, Price = price.Price, Id = price.Id});
+            return pricesDto;
         }
 
-        public List<HotelPrices> GetAll()
+        public List<HotelPricesDTO> GetAll()
         {
             throw new NotImplementedException();
         }
@@ -49,7 +57,7 @@ namespace TaskRepositories
             context.SaveChanges();
         }
 
-        public void Update(int id, HotelPrices entity)
+        public void Update(int id, HotelPricesDTO entity)
         {
             var hotel = Get(id);
             hotel.Date = entity.Date;

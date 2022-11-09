@@ -11,8 +11,8 @@ using TaskContext;
 namespace TaskContext.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221107112051_Init")]
-    partial class Init
+    [Migration("20221109123320_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -168,13 +168,11 @@ namespace TaskContext.Migrations
 
             modelBuilder.Entity("TaskModels.HotelPrices", b =>
                 {
-                    b.HasOne("TaskModels.Hotel", "Hotel")
+                    b.HasOne("TaskModels.Hotel", null)
                         .WithMany("Prices")
                         .HasForeignKey("HotelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Hotel");
                 });
 
             modelBuilder.Entity("TaskModels.Hotel", b =>

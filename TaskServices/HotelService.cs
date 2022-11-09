@@ -1,5 +1,4 @@
-﻿using TaskModels;
-using TaskServices.Interfacs;
+﻿using TaskServices.Interfacs;
 using TaskModels.DTO.Hotel;
 using TaskRepositories.Interfaces;
 
@@ -15,14 +14,14 @@ namespace TaskServices
             this.hotelPricesRepository = hotelPricesRepository;
         }
 
-        public void AddNewHotel(Hotel hotel)
+        public void AddNewHotel(HotelDTO hotel)
         {
             hotelRepository.Add(hotel);
             if(hotel.Prices.Count > 0) hotelPricesRepository.AddMany(hotel.Id,hotel.Prices);
             hotelRepository.Save();
         }
 
-        public List<Hotel> AllHotels()
+        public List<HotelDTO> AllHotels()
         {
             return hotelRepository.GetAll();
         }
@@ -32,7 +31,7 @@ namespace TaskServices
             hotelRepository.Delete(id);
         }
 
-        public Hotel GetHotelById(int id)
+        public HotelDTO GetHotelById(int id)
         {
             return hotelRepository.Get(id);
         }
@@ -57,7 +56,7 @@ namespace TaskServices
             return finalResult;
         }
 
-        public void UpdateHotel(int id, Hotel hotel)
+        public void UpdateHotel(int id, HotelDTO hotel)
         {
             hotelRepository.Update(id, hotel);
         }

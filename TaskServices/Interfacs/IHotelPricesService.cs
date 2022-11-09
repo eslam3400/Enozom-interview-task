@@ -1,13 +1,14 @@
 ﻿using TaskModels;
+using TaskModels.DTO.HotelPrices;
 
 namespace TaskServices.Interfacs
 {
     public interface IHotelPricesService
     {
-        List<HotelPrices> AllPrices(int id);
-        void AddNewHotelPrice(HotelPrices hotelPrices);
-        void AddNewHotelPrices(int id, List<HotelPrices> hotelPrices);
-        void UpdateHotelPrice(int id, HotelPrices hotelPrices);
+        List<HotelPricesDTO> AllPrices(int id);
+        void AddNewHotelPrice(HotelPricesDTO hotelPrices);
+        void AddNewHotelPrices(int id, List<HotelPricesDTO> hotelPrices);
+        void UpdateHotelPrice(int id, HotelPricesDTO hotelPrices);
         void DeleteHotelPrice(int id);
     }
 }

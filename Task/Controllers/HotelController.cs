@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskServices.Interfacs;
-using TaskModels;
 using TaskModels.DTO.Hotel;
 
 namespace Task.Controllers
@@ -39,7 +38,7 @@ namespace Task.Controllers
             return Ok(hotel);
         }
         [HttpPost]
-        public IActionResult Add([FromBody]Hotel hotel) {
+        public IActionResult Add([FromBody]HotelDTO hotel) {
             if (hotel.Name == null) { return BadRequest("Please Provide HotelName"); }
             hotelService.AddNewHotel(hotel);
             return Ok();
@@ -48,7 +47,7 @@ namespace Task.Controllers
         [Route("{id}")]
         public IActionResult Update(int id, [FromBody] UpdateHotel hotel)
         {
-            hotelService.UpdateHotel(id, new Hotel { Name = hotel.Name });
+            hotelService.UpdateHotel(id, new HotelDTO { Name = hotel.Name });
             return Ok();
         }
         [HttpDelete]
