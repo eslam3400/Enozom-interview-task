@@ -20,7 +20,6 @@ namespace TaskRepositories
                 item.HotelId = id;
                 context.HotelPrices.Add(item);
             }
-            Save();
         }
 
         public void Delete(int id)

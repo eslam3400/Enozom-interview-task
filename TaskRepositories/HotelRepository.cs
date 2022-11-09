@@ -13,7 +13,6 @@ namespace TaskRepositories
         public void Add(Hotel entity)
         {
             context.Hotels.Add(entity);
-            Save();
         }
         public void Delete(int id)
         {

@@ -6,14 +6,19 @@ namespace TaskServices
     public class HotelService : IHotelService
     {
         private readonly IHotelRepository hotelRepository;
-        public HotelService(IHotelRepository hotelRepository)
+        private readonly IHotelPricesRepository hotelPricesRepository;
+        public HotelService(IHotelRepository hotelRepository, IHotelPricesRepository hotelPricesRepository)
         {
             this.hotelRepository = hotelRepository;
+            this.hotelPricesRepository = hotelPricesRepository;
         }
 
         public void AddNewHotel(Hotel hotel)
         {
             hotelRepository.Add(hotel);
+            if(hotel.Prices.Count > 0) hotelPricesRepository.AddMany(hotel.Id,hotel.Prices);
+            hotelRepository.Save();
+            hotelPricesRepository.Save();
         }
 
         public List<Hotel> AllHotels()
