@@ -1,4 +1,4 @@
-﻿using TaskModels.DTO.Hotel;
+﻿using TaskModels.DTOs.Hotel;
 
 namespace TaskRepositories.Interfaces
 {

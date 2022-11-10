@@ -1,4 +1,4 @@
-﻿namespace TaskModels.DTO.Hotel
+﻿namespace TaskModels.DTOs.Hotel
 {
     public class UpdateHotel
     {

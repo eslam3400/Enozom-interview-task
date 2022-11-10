@@ -1,5 +1,5 @@
 ﻿using TaskServices.Interfacs;
-using TaskModels.DTO.Hotel;
+using TaskModels.DTOs.Hotel;
 using TaskRepositories.Interfaces;
 
 namespace TaskServices

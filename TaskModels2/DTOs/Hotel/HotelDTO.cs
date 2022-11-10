@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TaskModels.DTO.HotelPrices;
+using TaskModels.DTOs.HotelPrices;
 
-namespace TaskModels.DTO.Hotel
+namespace TaskModels.DTOs.Hotel
 {
     public class HotelDTO
     {

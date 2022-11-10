@@ -1,6 +1,6 @@
 ﻿using TaskContext;
 using TaskModels;
-using TaskModels.DTO.HotelPrices;
+using TaskModels.DTOs.HotelPrices;
 using TaskRepositories.Interfaces;
 
 namespace TaskRepositories

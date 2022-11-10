@@ -1,4 +1,4 @@
-﻿using TaskModels.DTO.HotelPrices;
+﻿using TaskModels.DTOs.HotelPrices;
 
 namespace TaskRepositories.Interfaces
 {

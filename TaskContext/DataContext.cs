@@ -16,5 +16,6 @@ namespace TaskContext
         }
         public DbSet<Hotel> Hotels { get; set; }
         public DbSet<HotelPrices> HotelPrices { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

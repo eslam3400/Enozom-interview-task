@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskServices.Interfacs;
-using TaskModels.DTO.Hotel;
+using TaskModels.DTOs.Hotel;
+using Microsoft.AspNetCore.Authorization;
+using TaskModels.Enums;
 
 namespace Task.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class HotelController : ControllerBase
     {
         private readonly IHotelService hotelService;
@@ -38,6 +41,7 @@ namespace Task.Controllers
             return Ok(hotel);
         }
         [HttpPost]
+        [Authorize(Roles = nameof(UserRole.Admin))]
         public IActionResult Add([FromBody]HotelDTO hotel) {
             if (hotel.Name == null) { return BadRequest("Please Provide HotelName"); }
             hotelService.AddNewHotel(hotel);
@@ -45,6 +49,7 @@ namespace Task.Controllers
         }
         [HttpPut]
         [Route("{id}")]
+        [Authorize(Roles = nameof(UserRole.Admin))]
         public IActionResult Update(int id, [FromBody] UpdateHotel hotel)
         {
             hotelService.UpdateHotel(id, new HotelDTO { Name = hotel.Name });
@@ -52,6 +57,7 @@ namespace Task.Controllers
         }
         [HttpDelete]
         [Route("{id}")]
+        [Authorize(Roles = nameof(UserRole.Admin))]
         public IActionResult Delete(int id)
         {
             hotelService.DeleteHotel(id);
